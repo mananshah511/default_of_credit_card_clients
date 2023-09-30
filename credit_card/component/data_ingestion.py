@@ -70,6 +70,7 @@ class DataIngestion:
             creditcard_df = pd.read_excel(file_path)
             headers = creditcard_df.iloc[0]
             creditcard_df.columns = headers
+            creditcard_df.drop(index=0, axis=0, inplace=True)
             logging.info(f"reading data completed")
 
             logging.info(f"splitting data in train and test")
@@ -95,10 +96,10 @@ class DataIngestion:
                 logging.info(f"moving train data as csv")
                 train_df.to_csv(train_file_path,index=False)
 
-            if train_df is not None:
+            if test_df is not None:
                 os.makedirs(self.data_ingestion_config.ingested_test_dir,exist_ok=True)
                 logging.info(f"moving test data as csv")
-                train_df.to_csv(test_file_path,index=False)
+                test_df.to_csv(test_file_path,index=False)
 
             data_ingestion_artifact = DataIngestionArtifact(is_ingested=True,message="Data Ingestion completed successfully",
                                                             train_file_path=train_file_path,test_file_path=test_file_path)
