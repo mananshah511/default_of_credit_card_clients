@@ -7,3 +7,7 @@ DataIngestionArtifact = namedtuple("DataIngestionArtifact",
 DataValidationArtifact = namedtuple("DataValidationArtifact",
                                     ["is_validated","message","schema_file_path","reprot_file_path"]
                                     )
+
+DataTransformArtifact = namedtuple("DataTransformArtifact",
+                                   ["is_transform","message","transform_train_dir","transform_test_dir",
+                                    "preprocessed_dir","cluster_model_dir"])

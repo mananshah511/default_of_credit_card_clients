@@ -15,3 +15,12 @@ data_validation_config:
   schema_file : schema.yaml
   report_page_file_name : report.html
 
+data_transform_config:
+  graph_save_dir : graph_data
+  train_dir : train
+  test_dir : test
+  preprocessed_object_dir: preprocessed
+  preprocessed_object_file_name: preprocessed.pkl
+  cluster_model_dir: cluster_model
+  cluster_model_name: cluster_model.pkl  
+
