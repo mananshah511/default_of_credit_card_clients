@@ -2,7 +2,7 @@ import os,sys
 from credit_card.logger import logging
 from credit_card.exception import CreditCardException
 from credit_card.constant import *
-from credit_card.entity.config_entity import DataIngestionConfig,TrainingPipelineConfig
+from credit_card.entity.config_entity import DataIngestionConfig,TrainingPipelineConfig,DataValidationConfig
 from credit_card.util.util import read_yaml
 
 class Configuration:
@@ -51,9 +51,34 @@ class Configuration:
         except Exception as e:
             raise CreditCardException(e,sys) from e
         
+    def get_data_validation_config(self)->DataValidationConfig:
+        try:
+            logging.info(f"get data validation config function started")
+            artifact_dir = self.training_pipeline_config.artifact_dir
+
+            data_validation_config = self.config_info[DATA_VALIDTION_CONFIG_KEY]
+
+            data_validation_artifact_dir = os.path.join(artifact_dir,DATA_VALIDATION_DIR,self.time_stamp)
+
+            schema_dir = os.path.join(ROOT_DIR,data_validation_config[DATA_VALIDATION_SCHEMA_DIR_KEY])
+
+            schema_file_dir = os.path.join(schema_dir,data_validation_config[DATA_VALIDATION_SCHEMA_FILE_KEY])
+
+            report_file_path = os.path.join(data_validation_artifact_dir,data_validation_config[DATA_VALIDATION_REPORT_PAGE_FILE_NAME])
+
+            data_validation_config = DataValidationConfig(schema_file_dir=schema_file_dir,
+                                                          report_page_file_dir=report_file_path,
+                                                          report_name=data_validation_config[DATA_VALIDATION_REPORT_PAGE_FILE_NAME]
+                                                          )
+            logging.info(f"data validation config : {data_validation_config}")
+            return data_validation_config
+
+        except Exception as e:
+            raise CreditCardException(e,sys) from e
+        
     def get_training_pipeline_config(self)->TrainingPipelineConfig:
         try:
-            logging.info("get training pipeline config function started")
+            logging.info(f"get training pipeline config function started")
             training_pipeline_config = self.config_info[TRAINING_PIPELINE_CONFIG_KEY]
 
             artifact_dir = os.path.join(ROOT_DIR,training_pipeline_config[TRAINING_PIPELINE_NAME_KEY],

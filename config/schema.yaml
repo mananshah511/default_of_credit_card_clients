@@ -1,0 +1,59 @@
+columns:
+  ID: object
+  LIMIT_BAL: object                     
+  SEX: object                          
+  EDUCATION: object                   
+  MARRIAGE: object                    
+  AGE: object                           
+  PAY_0: object  
+  PAY_1: object                         
+  PAY_2: object                         
+  PAY_3: object                         
+  PAY_4: object                         
+  PAY_5: object                       
+  PAY_6: object                         
+  BILL_AMT1: object                     
+  BILL_AMT2: object                    
+  BILL_AMT3: object                     
+  BILL_AMT4: object                     
+  BILL_AMT5: object                     
+  BILL_AMT6: object                     
+  PAY_AMT1: object                     
+  PAY_AMT2: object                      
+  PAY_AMT3: object                      
+  PAY_AMT4: object                      
+  PAY_AMT5: object                      
+  PAY_AMT6: object                      
+  default payment next month: object
+
+numerical_columns:
+  - ID
+  - LIMIT_BAL                                              
+  - EDUCATION                                      
+  - AGE                           
+  - PAY_0
+  - PAY_1                         
+  - PAY_2                         
+  - PAY_3                         
+  - PAY_4                         
+  - PAY_5                       
+  - PAY_6                         
+  - BILL_AMT1                    
+  - BILL_AMT2                    
+  - BILL_AMT3                    
+  - BILL_AMT4                    
+  - BILL_AMT5                  
+  - BILL_AMT6                     
+  - PAY_AMT1                  
+  - PAY_AMT2                     
+  - PAY_AMT3                     
+  - PAY_AMT4                     
+  - PAY_AMT5                      
+  - PAY_AMT6                      
+  - default payment next month
+
+categorical_columns:
+  - SEX
+  - MARRIAGE
+
+target_column: default payment next month
