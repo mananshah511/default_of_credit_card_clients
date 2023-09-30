@@ -9,6 +9,11 @@ CONFIG_FILE_PATH = os.path.join(ROOT_DIR,CONFIF_DIR,CONFIG_FILE_NAME)
 
 CURRENT_TIME_STAMP = f"{datetime.now().strftime('%Y-%m-%d-%H-%M-%S')}"
 
+COLUMN_KEY = "columns"
+NUMERIC_COULMN_KEY = "numerical_columns"
+CATEGORICAL_COLUMN_KEY = "categorical_columns"
+TARGET_COLUMN_KEY = "target_column"
+
 
 #training pipeline related variables
 

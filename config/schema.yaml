@@ -5,8 +5,7 @@ columns:
   EDUCATION: object                   
   MARRIAGE: object                    
   AGE: object                           
-  PAY_0: object  
-  PAY_1: object                         
+  PAY_0: object                          
   PAY_2: object                         
   PAY_3: object                         
   PAY_4: object                         
@@ -31,8 +30,7 @@ numerical_columns:
   - LIMIT_BAL                                              
   - EDUCATION                                      
   - AGE                           
-  - PAY_0
-  - PAY_1                         
+  - PAY_0                        
   - PAY_2                         
   - PAY_3                         
   - PAY_4                         

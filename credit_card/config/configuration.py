@@ -64,10 +64,10 @@ class Configuration:
 
             schema_file_dir = os.path.join(schema_dir,data_validation_config[DATA_VALIDATION_SCHEMA_FILE_KEY])
 
-            report_file_path = os.path.join(data_validation_artifact_dir,data_validation_config[DATA_VALIDATION_REPORT_PAGE_FILE_NAME])
+            
 
             data_validation_config = DataValidationConfig(schema_file_dir=schema_file_dir,
-                                                          report_page_file_dir=report_file_path,
+                                                          report_page_file_dir=data_validation_artifact_dir,
                                                           report_name=data_validation_config[DATA_VALIDATION_REPORT_PAGE_FILE_NAME]
                                                           )
             logging.info(f"data validation config : {data_validation_config}")
