@@ -9,3 +9,6 @@ data_ingestion_config:
   ingested_data_dir : ingested_data
   ingested_train_dir : train
   ingested_test_dir : test
+
+
+

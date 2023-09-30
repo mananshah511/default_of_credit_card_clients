@@ -25,7 +25,7 @@ class Configuration:
 
             data_ingestion_config = self.config_info[DATA_INGESTION_CONFIG_KEY]
 
-            data_ingestion_artifact_dir = os.path.join(ROOT_DIR,DATA_INGESTION_DIR,self.time_stamp)
+            data_ingestion_artifact_dir = os.path.join(artifact_dir,DATA_INGESTION_DIR,self.time_stamp)
 
             dataset_download_url = data_ingestion_config[DATA_INGESTION_URL_KEY]
 
