@@ -11,3 +11,7 @@ DataValidationArtifact = namedtuple("DataValidationArtifact",
 DataTransformArtifact = namedtuple("DataTransformArtifact",
                                    ["is_transform","message","transform_train_dir","transform_test_dir",
                                     "preprocessed_dir","cluster_model_dir"])
+
+ModelArtifactConfig = namedtuple("ModelArtifactConfig",
+                                ["is_trained","message","trained_model_path","train_accuracy","test_accuracy",
+                                 "model_accuracy"])

@@ -1,0 +1,46 @@
+grid_search:
+  class: GridSearchCV
+  module: sklearn.model_selection
+  params:
+    cv: 5
+    verbose: 2
+  
+model_selection:
+  module_0:
+    class: LogisticRegression
+    module: sklearn.linear_model
+    params:
+      penalty: l2
+    search_param_grid:
+      penalty:
+      - l2
+      - None
+
+  module_1:
+    class: RandomForestClassifier
+    module: sklearn.ensemble
+    params:
+      max_depth: 2
+    search_param_grid:
+      max_depth:
+      - 1
+      - 2
+      - 9
+      - 10
+      - 11
+      - 12
+      - 15
+
+
+  module_2:
+    class: DecisionTreeClassifier
+    module: sklearn.tree
+    params:
+      max_depth: 2
+    search_param_grid:
+      max_depth:
+      - 8
+      - 9
+      - 10
+      - 11
+      - 12
