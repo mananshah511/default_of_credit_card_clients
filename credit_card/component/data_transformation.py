@@ -17,7 +17,7 @@ from credit_card.constant import NO_CLUSTER,TARGET_COLUMN_KEY
 import matplotlib.pyplot as plt
 from pathlib import Path
 
-column_trans = None
+
 class trans(BaseException,TransformerMixin):
   def __init(self):
     pass
@@ -27,7 +27,9 @@ class trans(BaseException,TransformerMixin):
 
   def transform(self,X,y=None):
     X=pd.get_dummies(X,columns = ['SEX','MARRIAGE'],drop_first=True,dtype='int64')
+    global column_trans
     column_trans = X.columns
+    logging.info(f"columns after transformation are :{column_trans}")
     return X
 
 class DataTransformation:
@@ -89,13 +91,14 @@ class DataTransformation:
                 train_df.drop('ID',axis=1,inplace=True)
                 columns = train_df.columns
                 logging.info(f"column name after dropping target columns : {columns}")
-                logging.info(f"{train_df}")
+                
                 train_df = pre_processing_object.fit_transform(train_df)
-                logging.info(f"{train_df}")
+                
                 logging.info(f"preprocessing on train data is performed")
 
                 train_df = pd.DataFrame(train_df,columns=column_trans)
                 train_df = pd.concat([train_df,target_df],axis=1)
+                
                 logging.info(f"combining train and target dataframe after preprocessing")
                 return train_df
             else:
