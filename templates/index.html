@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html >
+<!--From https://codepen.io/frytyler/pen/EGdtg-->
+<head>
+  <meta charset="UTF-8">
+  <title>Credit Card project</title>
+  <link href='https://fonts.googleapis.com/css?family=Pacifico' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Arimo' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Hind:300' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300' rel='stylesheet' type='text/css'>
+
+
+</head>
+
+<body>
+ <div class="login">
+	<h1>CREDIT CARD DEFAULTER PREDICTION</h1>
+
+     <!-- Main Input For Receiving Query to our ML -->
+    <form action="{{ url_for('predict')}}"method="post">
+      <input type="text" name="Credit" placeholder="Amount of the given credit" required="required" size="50" /><br><br>
+	  <label for="gender">Gender:</label>
+		<select id="gender" name="gender">
+		<option value=1>Male</option>
+		<option value=2>Female</option>
+		</select>
+    	<br><br>
+
+        <label for="education">Education:</label>
+		<select id="eucation" name="education">
+		<option value=1>Graduate school</option>
+        <option value=2>University</option>
+        <option value=3>High school</option>
+		<option value=4>Others</option>
+		</select>
+    	<br><br>
+
+        <label for="marital">Marital status:</label>
+		<select id="marital" name="marital">
+		<option value=1>Married</option>
+		<option value=2>Single</option>
+        <option value=3>Others</option>
+		</select>
+    	<br><br>
+
+		<input type="text" name="Age" placeholder="Age" required="required" size="50" /><br><br>
+
+        <label for="gender">History of past payments of six months:</label><br><br>
+        <input type="text" name="pay0" placeholder="PAY_0" required="required" size="50" /><br><br>
+        <input type="text" name="pay2" placeholder="PAY_2" required="required" size="50" /><br><br>
+        <input type="text" name="pay3" placeholder="PAY_3" required="required" size="50" /><br><br>
+        <input type="text" name="pay4" placeholder="PAY_4" required="required" size="50" /><br><br>
+        <input type="text" name="pay5" placeholder="PAY_5" required="required" size="50" /><br><br>
+        <input type="text" name="pay6" placeholder="PAY_6" required="required" size="50" /><br><br>
+
+        <label for="gender">History amount of bill payments of six months:</label><br><br>
+        <input type="text" name="BILLAMT1" placeholder="BILL_AMT1" required="required" size="50" /><br><br>
+        <input type="text" name="BILLAMT2" placeholder="BILL_AMT2" required="required" size="50" /><br><br>
+        <input type="text" name="BILLAMT3" placeholder="BILL_AMT3" required="required" size="50" /><br><br>
+        <input type="text" name="BILLAMT4" placeholder="BILL_AMT4" required="required" size="50" /><br><br>
+        <input type="text" name="BILLAMT5" placeholder="BILL_AMT5" required="required" size="50" /><br><br>
+        <input type="text" name="BILLAMT6" placeholder="BILL_AMT6" required="required" size="50" /><br><br>
+
+        <label for="gender">History amount of payments of six months:</label><br><br>
+        <input type="text" name="PAYAMT1" placeholder="PAY_AMT1" required="required" size="50" /><br><br>
+        <input type="text" name="PAYAMT2" placeholder="PAY_AMT2" required="required" size="50" /><br><br>
+        <input type="text" name="PAYAMT3" placeholder="PAY_AMT3" required="required" size="50" /><br><br>
+        <input type="text" name="PAYAMT4" placeholder="PAY_AMT4" required="required" size="50" /><br><br>
+        <input type="text" name="PAYAMT5" placeholder="PAY_AMT5" required="required" size="50" /><br><br>
+        <input type="text" name="PAYAMT6" placeholder="PAY_AMT6" required="required" size="50" /><br><br>
+       
+        <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+    </form>
+
+   <br>
+   <br>
+
+
+ </div>
+ {{prediction_text}}
+
+ <form action="{{ url_for('train')}}"method="get">
+  <label for="gender">Click here to start training</label><br><br>
+    <button type="submit" class="btn btn-primary btn-block btn-large">Train</button><br>,<br>
+    {{prediction_text}}
+  </form>
+
+</body>
+</html>

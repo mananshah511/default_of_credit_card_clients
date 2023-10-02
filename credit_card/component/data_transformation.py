@@ -26,7 +26,7 @@ class trans(BaseException,TransformerMixin):
     return self
 
   def transform(self,X,y=None):
-    X=pd.get_dummies(X,columns = ['SEX','MARRIAGE'],drop_first=True,dtype='int64')
+    X=pd.get_dummies(X,columns = ['SEX','MARRIAGE','EDUCATION'],drop_first=True,dtype='int64')
     global column_trans
     column_trans = X.columns
     logging.info(f"columns after transformation are :{column_trans}")
@@ -100,7 +100,7 @@ class DataTransformation:
                 train_df = pd.concat([train_df,target_df],axis=1)
                 
                 logging.info(f"combining train and target dataframe after preprocessing")
-                return train_df
+                return train_df,pre_processing_object
             else:
                 test_file_path = self.data_ingestion_artifact.test_file_path
                 logging.info(f"test file path is : {test_file_path}")
@@ -231,13 +231,13 @@ class DataTransformation:
     def intiate_data_transform(self)->DataTransformArtifact:
         try:
             preprocessed_obj = self.get_pre_processing_object()
+        
+            train_df,preprocessed_obj = self.perform_pre_processing(pre_processing_object=preprocessed_obj)
             preprocessed_dir = os.path.dirname(self.data_transform_config.preprocessed_file_path)
             os.makedirs(preprocessed_dir,exist_ok=True)
             with open(self.data_transform_config.preprocessed_file_path,'wb') as objfile:
                 dill.dump(preprocessed_obj,objfile)
             logging.info(f"pre processing object saved")
-
-            train_df = self.perform_pre_processing(pre_processing_object=preprocessed_obj)
 
             test_df = self.perform_pre_processing(pre_processing_object=preprocessed_obj,is_test_data=True)
 

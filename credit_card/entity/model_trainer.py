@@ -55,7 +55,7 @@ def get_evulated_classification_model(model_list:list,X_train:np.ndarray,y_train
             logging.info(f"model accuracy : {model_accuracy}")
             logging.info(f"diff in test train accuracy is : {diff_train_test_accu}")
 
-            if model_accuracy>=base_accuracy and diff_train_test_accu < 0.10:
+            if model_accuracy>=base_accuracy and diff_train_test_accu < 0.05:
                 base_accuracy = model_accuracy
 
                 metric_info_artifact = MetricInfoArtifact(model_name=model_name,

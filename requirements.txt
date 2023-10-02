@@ -2,3 +2,5 @@ gunicorn
 flasks
 six
 evidently==0.2.8
+flasks
+flask_cors
