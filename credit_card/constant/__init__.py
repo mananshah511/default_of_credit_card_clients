@@ -70,6 +70,11 @@ MODEL_EVULATION_DIR = "model_evulation"
 MODEL_EVULATION_FILE_NAME_KEY = "model_evulation_file_name"
 
 
+BEST_MODEL_KEY = "best_model"
+HISTORY_KEY = "history"
+MODEL_PATH_KEY = "model_path"
+
+
 
 
 

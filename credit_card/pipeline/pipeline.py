@@ -1,13 +1,13 @@
 import os,sys
 from credit_card.logger import logging
 from credit_card.exception import CreditCardException
-from credit_card.entity.artifact_entity import DataIngestionArtifact,DataValidationArtifact,DataTransformArtifact,ModelArtifactConfig
-from credit_card.entity.config_entity import DataIngestionConfig,DataValidationConfig,DataTransformConfig,ModelTrainerConfig
+from credit_card.entity.artifact_entity import DataIngestionArtifact,DataValidationArtifact,DataTransformArtifact,ModelArtifactConfig,ModelEvulationArtifact
 from credit_card.config.configuration import Configuration
 from credit_card.component.data_ingestion import DataIngestion
 from credit_card.component.data_validation import DataValidation
 from credit_card.component.data_transformation import DataTransformation
 from credit_card.component.model_trainer import ModelTrainer
+from credit_card.component.model_evulation import ModelEvulation
 
 class Pipeline:
     def __init__(self,config:Configuration=Configuration()) -> None:
@@ -50,13 +50,28 @@ class Pipeline:
         except Exception as e:
             raise CreditCardException(e,sys) from e
         
+    def start_model_evulation(self,data_transform_artifact:DataTransformArtifact,
+                              model_trainer_artifact : ModelArtifactConfig,
+                              data_validation_artifact : DataValidationArtifact)->ModelArtifactConfig:
+        try:
+            model_evulation = ModelEvulation(data_transform_artifact=data_transform_artifact,
+                                             data_validation_artifact=data_validation_artifact,
+                                             model_trainer_artifact=model_trainer_artifact,
+                                             model_evulation_config=self.config.get_model_evulation_config())
+            return model_evulation.intiate_model_evulation()
+        except Exception as e:
+            raise CreditCardException(e,sys) from e
+        
     def run_pipeline(self):
         try:
             data_ingestion_artifact = self.start_data_ingestion()
             data_validation_artifact = self.start_data_validation(data_ingestion_artifact=data_ingestion_artifact)
             data_transform_artifact = self.start_data_transform(data_ingestion_artifact=data_ingestion_artifact,
                                                                 data_validation_artifact=data_validation_artifact)
-            model_pipelne_artifact = self.start_model_trainer(data_transform_artifact=data_transform_artifact)
+            model_trainer_artifact = self.start_model_trainer(data_transform_artifact=data_transform_artifact)
+            model_evulatio_artifact = self.start_model_evulation(data_transform_artifact=data_transform_artifact,
+                                                                 data_validation_artifact=data_validation_artifact,
+                                                                 model_trainer_artifact=model_trainer_artifact)
 
         except Exception as e:
             raise CreditCardException(e,sys) from e
