@@ -241,8 +241,8 @@ class DataTransformation:
 
             test_df = self.perform_pre_processing(pre_processing_object=preprocessed_obj,is_test_data=True)
 
-            #self.get_and_save_graph_cluster(train_df=train_df)
-            #self.get_and_save_silhouette_score_graph(train_df=train_df)
+            self.get_and_save_graph_cluster(train_df=train_df)
+            self.get_and_save_silhouette_score_graph(train_df=train_df)
 
             k_means_object = self.save_data_based_on_cluster(n_clusters=NO_CLUSTER,train_df=train_df,test_df=test_df)
             cluster_model_path = os.path.dirname(self.data_transform_config.cluster_model_file_path)    

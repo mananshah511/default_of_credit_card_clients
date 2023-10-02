@@ -69,6 +69,12 @@ MODEL_EVULATION_CONFIG_KEY = "model_evulation_config"
 MODEL_EVULATION_DIR = "model_evulation"
 MODEL_EVULATION_FILE_NAME_KEY = "model_evulation_file_name"
 
+#model config related variables
+
+MODEL_PUSHER_CONFIG_KEY = "model_pusher_config"
+MODEL_PUSHER_DIR = "model_pusher"
+MODEL_PUSHER_EXPORT_MODEL_DIR_KEY = "model_export_dir"
+
 
 BEST_MODEL_KEY = "best_model"
 HISTORY_KEY = "history"

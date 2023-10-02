@@ -34,3 +34,5 @@ model_trainer_config:
 model_evulation_config:
   model_evulation_file_name : model_evulation.yaml
 
+model_pusher_config:
+  model_export_dir : saved_models
