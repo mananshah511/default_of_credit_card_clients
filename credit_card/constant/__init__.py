@@ -63,6 +63,13 @@ MODEL_TRAINER_BASE_ACCURACY_KEY = "base_acuracy"
 MODEL_TRAINER_MODEL_CONFIG_DIR_KEY = "model_config_dir"
 MODEL_TRAINER_MODEL_CONFIG_FILE_NAME_KEY = "model_config_file_name"
 
+#model evulation related varibales
+
+MODEL_EVULATION_CONFIG_KEY = "model_evulation_config"
+MODEL_EVULATION_DIR = "model_evulation"
+MODEL_EVULATION_FILE_NAME_KEY = "model_evulation_file_name"
+
+
 
 
 

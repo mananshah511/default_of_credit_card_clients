@@ -30,3 +30,7 @@ model_trainer_config:
   model_config_dir : config
   model_config_file_name : model.yaml
 
+
+model_evulation_config:
+  model_evulation_file_name : model_evulation.yaml
+
