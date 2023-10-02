@@ -75,7 +75,7 @@ class ModelEvulation:
             eval_result = {CLUSTER_NUMBER : {BEST_MODEL_KEY : {MODEL_PATH_KEY : model_evulation_artifact.evulation_model_file_path}}}
 
             if previous_best_model is not None:
-                model_history = {self.model_evulation_config.time_stamp}
+                model_history = {self.model_evulation_config.time_stamp : previous_best_model}
 
                 if CLUSTER_HISTORY not in model_evulation_file_content:
                     cluster_history = {CLUSTER_HISTORY:model_history}
